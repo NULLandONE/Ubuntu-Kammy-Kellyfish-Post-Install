@@ -99,6 +99,16 @@ os.system("cd bootlogo && sudo cp ubuntu-logo.png /usr/share/plymouth/ && sudo c
 time.sleep(3.5)
 done = True
 
-print("And were done!")
+tadd = input("Apps/Programs to be added: ")
+tdelete = input("Apps/Programs to be removed: ")
+os.system("sudo apt install -y " + tadd)
+os.system("sudo apt remove -y " + tdelete)
+
+print("And I'm done with collecting input!")
+sleep(0.7)
+os.system("sudo add-apt-repository universe && sudo add-apt-repository multiverse")
+os.system("sudo apt install ubuntu-restricted-extras -y")
+os.system("gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize' ")
+os.system("sudo apt install libfuse2 -y")
 input("Now press enter to restart your pc . . .")
 os.system("sudo reboot")
